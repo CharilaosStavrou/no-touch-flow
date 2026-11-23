@@ -4,6 +4,7 @@ import { Field, NotFilledBadge } from './components/NotFilled'
 import { Diagram } from './components/Diagram'
 import { Legend } from './components/Legend'
 import { ThemeToggle } from './components/ThemeToggle'
+import { DetailPanel } from './components/DetailPanel'
 
 interface Props {
   content: Content
@@ -19,16 +20,6 @@ function App({ content, isFixture }: Props) {
   useEffect(() => {
     document.title = isFixture ? 'DEV FIXTURE - NOT REAL CONTENT' : meta.title
   }, [isFixture, meta.title])
-
-  const selectedLabel =
-    selectedId &&
-    (content.nodes.find((n) => n.id === selectedId)?.label ??
-      (() => {
-        const e = content.edges.find((x) => x.id === selectedId)
-        if (!e) return selectedId
-        const l = (id: string) => content.nodes.find((n) => n.id === id)?.label ?? id
-        return `${e.kind === 'material' ? 'Material' : 'Information'} flow ${l(e.from)} → ${l(e.to)}`
-      })())
 
   return (
     <div className="app">
@@ -69,19 +60,13 @@ function App({ content, isFixture }: Props) {
               </p>
             </div>
 
-            <Diagram content={content} view={view} selectedId={selectedId} onSelect={setSelectedId} />
-            <Legend />
-
-            <p className="selection-status" aria-live="polite">
-              {selectedLabel ? (
-                <>
-                  Selected: <strong>{selectedLabel}</strong>{' '}
-                  <span className="muted">(details panel arrives in Phase 2)</span>
-                </>
-              ) : (
-                <span className="muted">Click or press Enter on an element to select it.</span>
-              )}
-            </p>
+            <div className="workspace">
+              <div className="workspace-main">
+                <Diagram content={content} view={view} selectedId={selectedId} onSelect={setSelectedId} />
+                <Legend />
+              </div>
+              <DetailPanel content={content} view={view} selectedId={selectedId} onClose={() => setSelectedId(null)} />
+            </div>
           </>
         ) : (
           <p>

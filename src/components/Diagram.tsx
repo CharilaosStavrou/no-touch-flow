@@ -46,7 +46,12 @@ export function Diagram({ content, view, selectedId, onSelect }: Props) {
   const t = useTween(view.sharedInformationLayer ? 1 : 0)
 
   const nodeById = useMemo(() => new Map(content.nodes.map((n) => [n.id, n])), [content])
-  const labelOf = (id: string) => nodeById.get(id)?.label ?? id
+  const labelOf = (id: string): string => {
+    const n = nodeById.get(id)
+    if (n) return n.label
+    const e = content.edges.find((x) => x.id === id)
+    return e ? `${labelOf(e.from)} → ${labelOf(e.to)}` : id
+  }
 
   const nodeVisible = (id: string) => isVisible(view.visibleNodeIds, id)
   const edgeVisible = (e: FlowEdge) =>
@@ -97,9 +102,22 @@ export function Diagram({ content, view, selectedId, onSelect }: Props) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       e.stopPropagation()
-      onSelect(selectedId === id ? null : id)
+      onSelect(id)
     }
   }
+
+  // reading order: information band first, then lane by lane; inside a band column by column
+  const bandOf = (r: Rect) => {
+    const i = layout.lanes.findIndex((l) => r.y >= l.y && r.y < l.y + l.h)
+    return i < 0 ? -1 : i
+  }
+  const byPosition = (a: Rect, b: Rect) => bandOf(a) - bandOf(b) || a.x - b.x || a.y - b.y
+  const orderedNodes = [...layout.nodes.values()].sort((a, b) => byPosition(a.rect, b.rect))
+  const nodeOrder = new Map(orderedNodes.map((n, i) => [n.node.id, i]))
+  const orderedEdges = [...layout.edges].sort(
+    (a, b) =>
+      nodeOrder.get(a.edge.from)! - nodeOrder.get(b.edge.from)! || nodeOrder.get(a.edge.to)! - nodeOrder.get(b.edge.to)!,
+  )
 
   const shared = layout.sharedLayer
   const infoCenters = infoNodes
@@ -132,7 +150,7 @@ export function Diagram({ content, view, selectedId, onSelect }: Props) {
         preserveAspectRatio="xMidYMin meet"
         tabIndex={0}
         role="group"
-        aria-label={`Flow diagram, ${view.label} view. Plus and minus zoom, arrow keys pan, 0 resets, Tab moves between elements.`}
+        aria-label={`Flow diagram, ${view.label} view. Plus and minus zoom, arrow keys pan, 0 resets. Tab moves through nodes, then flows; the focused element opens in the details panel.`}
         onKeyDown={onKeyDown}
         {...handlers}
       >
@@ -218,33 +236,24 @@ export function Diagram({ content, view, selectedId, onSelect }: Props) {
             )}
           </g>
 
-          {/* edges */}
-          {layout.edges.map(({ edge, path }) => {
-            const visible = edgeVisible(edge)
-            const selected = selectedId === edge.id
-            const kindLabel = edge.kind === 'material' ? 'Material flow' : 'Information flow'
-            return (
-              <g
-                key={edge.id}
-                className={`edge edge-${edge.kind} ${selected ? 'is-selected' : ''}`}
-                style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none' }}
-                data-interactive
-                tabIndex={visible ? 0 : -1}
-                role="button"
-                aria-hidden={!visible}
-                aria-pressed={selected}
-                aria-label={`${kindLabel} from ${labelOf(edge.from)} to ${labelOf(edge.to)}${edge.label ? `: ${edge.label}` : ''}`}
-                onClick={() => onSelect(selected ? null : edge.id)}
-                onKeyDown={activate(edge.id)}
-              >
-                <path d={path} className="edge-hit" />
-                <path d={path} className="edge-line" markerEnd={`url(#arrow-${edge.kind})`} />
-              </g>
-            )
-          })}
+          {/* edge lines: painted under the nodes, not focusable */}
+          <g aria-hidden="true">
+            {orderedEdges.map(({ edge, path }) => {
+              const visible = edgeVisible(edge)
+              return (
+                <path
+                  key={edge.id}
+                  d={path}
+                  className={`edge-line edge-line-${edge.kind} ${selectedId === edge.id ? 'is-selected' : ''}`}
+                  markerEnd={`url(#arrow-${edge.kind})`}
+                  style={{ opacity: visible ? 1 : 0 }}
+                />
+              )
+            })}
+          </g>
 
-          {/* nodes */}
-          {[...layout.nodes.values()].map(({ node, rect }) => (
+          {/* nodes (Tab order 1: top to bottom, left to right) */}
+          {orderedNodes.map(({ node, rect }) => (
             <DiagramNode
               key={node.id}
               node={node}
@@ -252,10 +261,35 @@ export function Diagram({ content, view, selectedId, onSelect }: Props) {
               typeLabel={content.nodeTypes.find((nt) => nt.id === node.type)?.label ?? node.type}
               visible={nodeVisible(node.id)}
               selected={selectedId === node.id}
-              onClick={() => onSelect(selectedId === node.id ? null : node.id)}
+              onSelect={() => onSelect(node.id)}
               onKeyDown={activate(node.id)}
             />
           ))}
+
+          {/* edge hit areas (Tab order 2): after the nodes so focus visits nodes first */}
+          {orderedEdges.map(({ edge, path }) => {
+            const visible = edgeVisible(edge)
+            const selected = selectedId === edge.id
+            const kindLabel = edge.kind === 'material' ? 'Material flow' : 'Information flow'
+            return (
+              <g
+                key={edge.id}
+                className={`edge edge-${edge.kind} ${selected ? 'is-selected' : ''}`}
+                style={{ pointerEvents: visible ? 'auto' : 'none' }}
+                data-interactive
+                tabIndex={visible ? 0 : -1}
+                role="button"
+                aria-hidden={!visible}
+                aria-pressed={selected}
+                aria-label={`${kindLabel} from ${labelOf(edge.from)} to ${labelOf(edge.to)}${edge.label ? `: ${edge.label}` : ''}`}
+                onClick={() => onSelect(edge.id)}
+                onFocus={() => onSelect(edge.id)}
+                onKeyDown={activate(edge.id)}
+              >
+                <path d={path} className="edge-hit" />
+              </g>
+            )
+          })}
 
           {/* manual handling markers */}
           {markers.map((m) => {
@@ -301,7 +335,7 @@ function DiagramNode({
   typeLabel,
   visible,
   selected,
-  onClick,
+  onSelect,
   onKeyDown,
 }: {
   node: FlowNode
@@ -309,7 +343,7 @@ function DiagramNode({
   typeLabel: string
   visible: boolean
   selected: boolean
-  onClick: () => void
+  onSelect: () => void
   onKeyDown: (e: React.KeyboardEvent) => void
 }) {
   const lines = wrapLabel(node.label)
@@ -325,7 +359,8 @@ function DiagramNode({
       aria-hidden={!visible}
       aria-pressed={selected}
       aria-label={`${node.label}, ${typeLabel}`}
-      onClick={onClick}
+      onClick={onSelect}
+      onFocus={onSelect}
       onKeyDown={onKeyDown}
     >
       <rect className="node-focus" x={rect.x - 5} y={rect.y - 5} width={rect.w + 10} height={rect.h + 10} rx={16} />
