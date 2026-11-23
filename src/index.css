@@ -8,6 +8,18 @@
   --warn-bg: #fff3c4;
   --warn-text: #5c4300;
   --warn-border: #c9a227;
+  --material: #1d3f8f;
+  --information: #0f7a6b;
+  --marker-bg: #c2410c;
+  --marker-fg: #ffffff;
+  --band-info: #eaf6f3;
+  --lane: #f6f7f9;
+  --lane-alt: #eef0f4;
+  --node-bg: #ffffff;
+  --node-border: #8a93a3;
+  --info-node-bg: #f4fbf9;
+  --danger-bg: #b91c1c;
+  --danger-fg: #ffffff;
 
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
@@ -27,6 +39,18 @@
     --warn-bg: #3a2f08;
     --warn-text: #ffe28a;
     --warn-border: #8a7016;
+    --material: #8fb3ff;
+    --information: #4fd1b8;
+    --marker-bg: #fb923c;
+    --marker-fg: #1a0d00;
+    --band-info: #13241f;
+    --lane: #171a1f;
+    --lane-alt: #1c2027;
+    --node-bg: #222731;
+    --node-border: #6b7383;
+    --info-node-bg: #1a2a26;
+    --danger-bg: #dc2626;
+    --danger-fg: #ffffff;
     color-scheme: dark;
   }
 }
@@ -41,6 +65,18 @@
   --warn-bg: #3a2f08;
   --warn-text: #ffe28a;
   --warn-border: #8a7016;
+  --material: #8fb3ff;
+  --information: #4fd1b8;
+  --marker-bg: #fb923c;
+  --marker-fg: #1a0d00;
+  --band-info: #13241f;
+  --lane: #171a1f;
+  --lane-alt: #1c2027;
+  --node-bg: #222731;
+  --node-border: #6b7383;
+  --info-node-bg: #1a2a26;
+  --danger-bg: #dc2626;
+  --danger-fg: #ffffff;
   color-scheme: dark;
 }
 
@@ -55,7 +91,7 @@ body {
 }
 
 .app {
-  max-width: 960px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 24px 16px;
 }
@@ -92,4 +128,342 @@ h2 {
 :focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.fixture-banner {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin: -24px -16px 16px;
+  padding: 10px 16px;
+  background: var(--danger-bg);
+  color: var(--danger-fg);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 20px 0 12px;
+}
+
+.view-description {
+  margin: 0;
+}
+
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.segmented button {
+  border: 0;
+  border-radius: 0;
+  padding: 8px 16px;
+  background: var(--surface);
+}
+
+.segmented button + button {
+  border-left: 1px solid var(--border);
+}
+
+.segmented button[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+/* diagram */
+.diagram-wrap {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.zoom-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.zoom-hint {
+  margin-right: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.zoom-controls button {
+  min-width: 36px;
+  padding: 4px 10px;
+}
+
+.diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.diagram:active {
+  cursor: grabbing;
+}
+
+.band > rect {
+  fill: var(--lane);
+}
+
+.band.lane-alt > rect {
+  fill: var(--lane-alt);
+}
+
+.band-info > rect {
+  fill: var(--band-info);
+}
+
+.lane-divider {
+  stroke: var(--border);
+}
+
+.band-label {
+  fill: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.svg-badge rect {
+  fill: var(--warn-bg);
+  stroke: var(--warn-border);
+  stroke-dasharray: 4 3;
+}
+
+.svg-badge text {
+  fill: var(--warn-text);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.island {
+  fill: var(--info-node-bg);
+  stroke: var(--information);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+}
+
+.shared-layer {
+  fill: var(--info-node-bg);
+  stroke: var(--information);
+  stroke-width: 2;
+}
+
+.shared-label {
+  fill: var(--information);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bus line {
+  stroke: var(--information);
+  stroke-width: 2;
+}
+
+.edge,
+.node,
+.manual-marker {
+  transition: opacity 0.5s ease;
+  outline: none;
+}
+
+.edge-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 16;
+  cursor: pointer;
+}
+
+.edge-line {
+  fill: none;
+  stroke-width: 3;
+  pointer-events: none;
+}
+
+.edge-material .edge-line {
+  stroke: var(--material);
+  stroke-width: 3.5;
+}
+
+.edge-information .edge-line {
+  stroke: var(--information);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+}
+
+.edge.is-selected .edge-line,
+.edge:focus-visible .edge-line {
+  stroke-width: 5.5;
+}
+
+.edge:focus-visible .edge-hit {
+  stroke: var(--accent);
+  stroke-opacity: 0.25;
+}
+
+.arrow-material {
+  fill: var(--material);
+}
+
+.arrow-information {
+  fill: var(--information);
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node-box {
+  fill: var(--node-bg);
+  stroke: var(--node-border);
+  stroke-width: 1.5;
+}
+
+.node-information-item .node-box {
+  fill: var(--info-node-bg);
+  stroke: var(--information);
+}
+
+.node-stationary-robot-station .node-box {
+  stroke: var(--material);
+  stroke-width: 2.5;
+}
+
+.node-icon {
+  color: var(--text);
+}
+
+.node-information-item .node-icon {
+  color: var(--information);
+}
+
+.node-label {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.node-focus {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 3;
+}
+
+.node:focus-visible .node-focus {
+  stroke: var(--accent);
+}
+
+.node.is-selected .node-box {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.manual-marker circle,
+.legend-marker circle {
+  fill: var(--marker-bg);
+}
+
+.manual-marker,
+.legend-marker {
+  color: var(--marker-fg);
+}
+
+.manual-marker:focus-visible circle {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-material {
+  stroke: var(--material);
+  stroke-width: 3.5;
+}
+
+.legend-information {
+  stroke: var(--information);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+}
+
+.legend-icon {
+  color: var(--text);
+}
+
+.selection-status {
+  min-height: 1.5em;
+}
+
+.warning {
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge,
+  .node,
+  .manual-marker {
+    transition: none;
+  }
 }

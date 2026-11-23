@@ -12,10 +12,26 @@
   },
   "requiredFields": [],
   "nodeTypes": [
-    { "id": "process-area", "label": "Process area", "description": "" },
-    { "id": "load-carrier", "label": "Load carrier", "description": "" },
-    { "id": "information-item", "label": "Information item", "description": "" },
-    { "id": "stationary-robot-station", "label": "Stationary robot station", "description": "" }
+    {
+      "id": "process-area",
+      "label": "Process area",
+      "description": ""
+    },
+    {
+      "id": "load-carrier",
+      "label": "Load carrier",
+      "description": ""
+    },
+    {
+      "id": "information-item",
+      "label": "Information item",
+      "description": ""
+    },
+    {
+      "id": "stationary-robot-station",
+      "label": "Stationary robot station",
+      "description": ""
+    }
   ],
   "lanes": [],
   "nodes": [
@@ -140,7 +156,42 @@
       }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "receiving-to-storage",
+      "from": "receiving",
+      "to": "storage",
+      "kind": "material",
+      "origin": "structural, from case",
+      "label": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "storage-to-production-floors",
+      "from": "storage",
+      "to": "production-floors",
+      "kind": "material",
+      "origin": "structural, from case",
+      "label": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    }
+  ],
   "views": [
     {
       "id": "current",

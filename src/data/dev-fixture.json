@@ -1,0 +1,463 @@
+{
+  "$schemaVersion": 1,
+  "meta": {
+    "title": "DEV FIXTURE - NOT REAL CONTENT",
+    "course": "Fixture course",
+    "technology": "Fixture technology",
+    "groupName": "Fixture group",
+    "speakers": [
+      "Fixture speaker A",
+      "Fixture speaker B"
+    ],
+    "caseSummary": "FIXTURE TEXT - not real content",
+    "talkDurationSeconds": 480,
+    "oppositionDurationSeconds": 300
+  },
+  "requiredFields": [],
+  "nodeTypes": [
+    {
+      "id": "process-area",
+      "label": "Process area",
+      "description": "FIXTURE TEXT - not real content"
+    },
+    {
+      "id": "load-carrier",
+      "label": "Load carrier",
+      "description": "FIXTURE TEXT - not real content"
+    },
+    {
+      "id": "information-item",
+      "label": "Information item",
+      "description": "FIXTURE TEXT - not real content"
+    },
+    {
+      "id": "stationary-robot-station",
+      "label": "Stationary robot station",
+      "description": "FIXTURE TEXT - not real content"
+    }
+  ],
+  "lanes": [
+    {
+      "id": "fx-lane-1",
+      "label": "Fixture lane 1",
+      "order": 1
+    },
+    {
+      "id": "fx-lane-2",
+      "label": "Fixture lane 2",
+      "order": 2
+    },
+    {
+      "id": "fx-lane-3",
+      "label": "Fixture lane 3",
+      "order": 3
+    }
+  ],
+  "nodes": [
+    {
+      "id": "fx-area-a",
+      "label": "Fixture area A",
+      "type": "process-area",
+      "laneId": "fx-lane-1",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-carrier",
+      "label": "Fixture carrier",
+      "type": "load-carrier",
+      "laneId": "fx-lane-1",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-robot-1",
+      "label": "Fixture robot 1",
+      "type": "stationary-robot-station",
+      "laneId": "fx-lane-1",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-area-b",
+      "label": "Fixture area B",
+      "type": "process-area",
+      "laneId": "fx-lane-2",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-robot-2",
+      "label": "Fixture robot 2",
+      "type": "stationary-robot-station",
+      "laneId": "fx-lane-2",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-area-c",
+      "label": "Fixture area C",
+      "type": "process-area",
+      "laneId": "fx-lane-3",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-info-1",
+      "label": "Fixture info 1",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-info-2",
+      "label": "Fixture info 2",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-info-3",
+      "label": "Fixture info 3",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-info-4",
+      "label": "Fixture info 4",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "fx-fx-area-a-fx-robot-1",
+      "from": "fx-area-a",
+      "to": "fx-robot-1",
+      "kind": "material",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-robot-1-fx-area-b",
+      "from": "fx-robot-1",
+      "to": "fx-area-b",
+      "kind": "material",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-area-b-fx-robot-2",
+      "from": "fx-area-b",
+      "to": "fx-robot-2",
+      "kind": "material",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-robot-2-fx-area-c",
+      "from": "fx-robot-2",
+      "to": "fx-area-c",
+      "kind": "material",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-area-a-fx-info-1",
+      "from": "fx-area-a",
+      "to": "fx-info-1",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-robot-1-fx-info-2",
+      "from": "fx-robot-1",
+      "to": "fx-info-2",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-info-2-fx-robot-2",
+      "from": "fx-info-2",
+      "to": "fx-robot-2",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-info-3-fx-area-c",
+      "from": "fx-info-3",
+      "to": "fx-area-c",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-info-4-fx-area-b",
+      "from": "fx-info-4",
+      "to": "fx-area-b",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-info-1-fx-info-2",
+      "from": "fx-info-1",
+      "to": "fx-info-2",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-info-2-fx-info-3",
+      "from": "fx-info-2",
+      "to": "fx-info-3",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    },
+    {
+      "id": "fx-fx-info-3-fx-info-4",
+      "from": "fx-info-3",
+      "to": "fx-info-4",
+      "kind": "information",
+      "label": "",
+      "origin": "dev fixture",
+      "detail": {
+        "whatPasses": "FIXTURE TEXT - not real content",
+        "whoNeeds": "FIXTURE TEXT - not real content",
+        "dataSource": "FIXTURE TEXT - not real content",
+        "uncertainty": "FIXTURE TEXT - not real content",
+        "implementationRequirement": "FIXTURE TEXT - not real content",
+        "expectedBenefit": "FIXTURE TEXT - not real content",
+        "sourceRef": "FIXTURE TEXT - not real content"
+      }
+    }
+  ],
+  "views": [
+    {
+      "id": "current",
+      "label": "Current (fragmented)",
+      "description": "FIXTURE TEXT - not real content",
+      "sharedInformationLayer": false,
+      "visibleNodeIds": [],
+      "visibleEdgeIds": [
+        "fx-fx-area-a-fx-robot-1",
+        "fx-fx-robot-1-fx-area-b",
+        "fx-fx-area-b-fx-robot-2",
+        "fx-fx-robot-2-fx-area-c",
+        "fx-fx-area-a-fx-info-1",
+        "fx-fx-info-3-fx-area-c"
+      ],
+      "manualHandlingMarkers": [
+        {
+          "targetId": "fx-area-a",
+          "note": "FIXTURE TEXT - not real content"
+        },
+        {
+          "targetId": "fx-fx-robot-1-fx-area-b",
+          "note": "FIXTURE TEXT - not real content"
+        },
+        {
+          "targetId": "fx-info-2",
+          "note": "FIXTURE TEXT - not real content"
+        },
+        {
+          "targetId": "fx-fx-info-3-fx-area-c",
+          "note": "FIXTURE TEXT - not real content"
+        }
+      ]
+    },
+    {
+      "id": "no-touch",
+      "label": "No-touch (integrated)",
+      "description": "FIXTURE TEXT - not real content",
+      "sharedInformationLayer": true,
+      "visibleNodeIds": [],
+      "visibleEdgeIds": [],
+      "manualHandlingMarkers": []
+    }
+  ],
+  "steps": [],
+  "learningOutcomes": [],
+  "questions": [],
+  "furtherResearch": [],
+  "sources": []
+}

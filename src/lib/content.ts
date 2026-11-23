@@ -53,6 +53,8 @@ export interface FlowEdge {
   to: string
   kind: EdgeKind
   label: string
+  /** Where the structural edge comes from, e.g. "structural, from case" or a note reference. */
+  origin: string
   detail: Detail
 }
 
@@ -140,6 +142,28 @@ export interface Content {
 }
 
 export const content = raw as unknown as Content
+
+export interface LoadedContent {
+  content: Content
+  /** True when the dev-only fixture (?fixture=dev) is loaded instead of content.json. */
+  isFixture: boolean
+}
+
+/**
+ * Loads content.json, or the dev fixture when running `npm run dev` with ?fixture=dev.
+ * `import.meta.env.DEV` is statically false in production builds, so the fixture import
+ * is removed from the bundle entirely.
+ */
+export async function loadContent(): Promise<LoadedContent> {
+  if (import.meta.env.DEV) {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('fixture') === 'dev') {
+      const mod = await import('../data/dev-fixture.json')
+      return { content: mod.default as unknown as Content, isFixture: true }
+    }
+  }
+  return { content, isFixture: false }
+}
 
 export function isEmpty(value: unknown): boolean {
   if (value === null || value === undefined) return true
