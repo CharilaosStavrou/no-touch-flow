@@ -1,0 +1,186 @@
+{
+  "$schemaVersion": 1,
+  "meta": {
+    "title": "No-Touch Information Flow Explorer",
+    "course": "ML2305 Production Logistics and Supply Chains",
+    "technology": "Industrial and Collaborative Robots (stationary robots)",
+    "groupName": "",
+    "speakers": [],
+    "caseSummary": "",
+    "talkDurationSeconds": 480,
+    "oppositionDurationSeconds": 300
+  },
+  "requiredFields": [],
+  "nodeTypes": [
+    { "id": "process-area", "label": "Process area", "description": "" },
+    { "id": "load-carrier", "label": "Load carrier", "description": "" },
+    { "id": "information-item", "label": "Information item", "description": "" },
+    { "id": "stationary-robot-station", "label": "Stationary robot station", "description": "" }
+  ],
+  "lanes": [],
+  "nodes": [
+    {
+      "id": "receiving",
+      "label": "Receiving",
+      "type": "process-area",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "storage",
+      "label": "Storage",
+      "type": "process-area",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "production-floors",
+      "label": "Production floors",
+      "type": "process-area",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "pallet",
+      "label": "Pallet",
+      "type": "load-carrier",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "deliveries",
+      "label": "Deliveries",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "material-locations",
+      "label": "Material locations",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "equipment-availability",
+      "label": "Equipment availability",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    },
+    {
+      "id": "management",
+      "label": "Management",
+      "type": "information-item",
+      "laneId": "",
+      "detail": {
+        "whatPasses": "",
+        "whoNeeds": "",
+        "dataSource": "",
+        "uncertainty": "",
+        "implementationRequirement": "",
+        "expectedBenefit": "",
+        "sourceRef": ""
+      }
+    }
+  ],
+  "edges": [],
+  "views": [
+    {
+      "id": "current",
+      "label": "Current (fragmented)",
+      "description": "",
+      "sharedInformationLayer": false,
+      "visibleNodeIds": [],
+      "visibleEdgeIds": [],
+      "manualHandlingMarkers": []
+    },
+    {
+      "id": "no-touch",
+      "label": "No-touch (integrated)",
+      "description": "",
+      "sharedInformationLayer": true,
+      "visibleNodeIds": [],
+      "visibleEdgeIds": [],
+      "manualHandlingMarkers": []
+    }
+  ],
+  "steps": [],
+  "learningOutcomes": [
+    {
+      "id": "ILO4",
+      "label": "ILO4 (information and interaction)",
+      "description": "",
+      "stepIds": [],
+      "nodeIds": [],
+      "coverage": ""
+    },
+    {
+      "id": "ILO5",
+      "label": "ILO5 (needs and sustainability)",
+      "description": "",
+      "stepIds": [],
+      "nodeIds": [],
+      "coverage": ""
+    }
+  ],
+  "questions": [],
+  "furtherResearch": [],
+  "sources": []
+}
